@@ -1,0 +1,160 @@
+.nav {
+  position: fixed;
+  width: 100%;
+  margin-bottom: 200px;
+  border-bottom: 1px solid #ccc;
+  background-color: white;
+  z-index: 10;
+
+  .inner {
+    max-width: 1180px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+
+    .left-menu {
+      display: flex;
+      align-items: center;
+
+      .dropdown {
+        cursor: pointer;
+
+        .fa-bars {
+          font-size: 20px;
+          color: #606060;
+          margin: -2px 15px 0 0;
+
+          &:hover .main-menu {
+            visibility: visible;
+          }
+        }
+
+        .main-menu {
+          background-color: #fff;
+          position: absolute;
+          top: 31px;
+          width: 218px;
+          visibility: hidden;
+
+          .main-list {
+            width: 100%;
+            padding: 10px 20px;
+
+            &:hover {
+              &:nth-child(1) {
+                background-color: transparent;
+              }
+
+              background-color: rgb(245, 244, 244);
+
+              .main-txt {
+                color: rgb(0, 81, 255);
+              }
+            }
+
+            &:nth-child(2) {
+              &:hover .sub-menu {
+                visibility: visible;
+              }
+            }
+
+            .main-txt {
+              color: #000;
+              cursor: pointer;
+              font-size: 13px;
+            }
+          }
+        }
+        .sub-menu {
+          background-color: #fff;
+          position: absolute;
+          top: 0px;
+          left: 218px;
+          width: 218px;
+          visibility: hidden;
+
+          .sub-list {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: rgb(245, 244, 244);
+
+            &:nth-child(1) {
+              background-color: transparent;
+            }
+
+            .sub-txt {
+              color: #777;
+              cursor: pointer;
+              font-size: 13px;
+            }
+
+            &:hover {
+              background-color: rgb(218, 216, 216);
+
+              &:nth-child(1) {
+                background-color: transparent;
+              }
+
+              .sub-txt {
+                color: rgb(0, 81, 255);
+              }
+            }
+          }
+        }
+      }
+
+      h1.logo {
+        font-size: 20px;
+        color: #404040;
+        font-weight: bold;
+      }
+    }
+
+    .right-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .fa-search {
+        margin: 5px 0 0;
+        padding: 3px 0;
+        font-size: 18px;
+        color: #606060;
+        margin-right: 10px;
+      }
+
+      .login-btn {
+        color: #606060;
+        font-size: 15px;
+        font-weight: bold;
+        margin: 0 6px 0;
+        padding: 0 10px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+      }
+
+      .bar {
+        font-size: 24px;
+        padding-top: 5px;
+        color: #ccc;
+      }
+
+      .my-btn {
+        width: 81.65px;
+        height: 30px;
+        line-height: 15px;
+        background-color: transparent;
+        border-radius: 30px;
+        margin: 0 0 0 15px;
+        padding: 0 10px;
+        border: 1px solid #9c9b9b;
+        color: #666666;
+        cursor: pointer;
+      }
+    }
+  }
+}
