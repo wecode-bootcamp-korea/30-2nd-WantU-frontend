@@ -1,0 +1,151 @@
+@import '/src/styles/variables.scss';
+
+.applyForm {
+  position: sticky;
+  top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: calc(100vh - 70px);
+  padding: 0;
+  border: 1px solid #e0e2e3;
+  border-radius: 3px;
+
+  .applyHeader {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    border-bottom: 1px solid #e0e2e3;
+
+    .closeBtn {
+      position: absolute;
+      right: 20px;
+      color: #c0c0c0;
+      cursor: pointer;
+    }
+  }
+
+  .scrollBox {
+    overflow-y: scroll;
+
+    .applyNotice {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 70px;
+      background-color: #eff1fb;
+      color: #333333;
+      font-size: 12px;
+      line-height: 170%;
+
+      span:first-child {
+        font-weight: bold;
+      }
+    }
+
+    .applyInfo {
+      padding: 20px 0;
+
+      .formTitle {
+        padding-left: 20px;
+        border-left: 2px solid $blue;
+      }
+
+      .formRow {
+        margin: 0 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid #e0e2e3;
+
+        .rowLabel {
+          display: inline-block;
+          width: 80px;
+        }
+
+        .rowInput {
+          all: unset;
+          width: calc(100% - 80px);
+        }
+      }
+
+      .uploadedFile {
+        display: flex;
+        align-items: center;
+        margin: 20px;
+        height: 60px;
+        border: 1px solid #e0e2e3;
+        border-radius: 5px;
+
+        input[type='checkbox'] {
+          margin: 0 15px;
+        }
+
+        .fileInfo {
+          display: flex;
+          flex-direction: column;
+
+          .fileName {
+            margin-bottom: 10px;
+            font-size: 14px;
+          }
+
+          .fileDate {
+            font-size: 11px;
+          }
+        }
+      }
+
+      .uploadBtn {
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 20px;
+        height: 50px;
+        width: calc(100% - 40px);
+        border: 1px solid #e0e2e3;
+        border-radius: 30px;
+        color: #6f6e6e;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      input[type='file'] {
+        position: fixed;
+        width: 0;
+        height: 0;
+      }
+
+      .noticeText {
+        margin: 40px 0 20px;
+        font-size: 12px;
+        color: #6f6e6e;
+        text-align: center;
+      }
+    }
+  }
+
+  .applyFooter {
+    padding: 30px 20px;
+    border-top: 1px solid #e0e2e3;
+
+    .applyBtn {
+      all: unset;
+      height: 50px;
+      width: 100%;
+      border-radius: 30px;
+      background-color: $blue;
+      color: #ffffff;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .inactiveBtn {
+      background-color: #f3f5f8;
+      color: #c0c0c0;
+      cursor: default;
+    }
+  }
+}
