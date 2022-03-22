@@ -1,0 +1,36 @@
+@import '../../styles/variables.scss';
+
+.one {
+  img {
+    width: 250px;
+    height: 187px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.2s;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 15px;
+  }
+
+  .company {
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+
+  .area {
+    color: #999999;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
