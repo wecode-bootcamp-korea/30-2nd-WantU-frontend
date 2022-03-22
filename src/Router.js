@@ -12,7 +12,7 @@ function Router() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        {/* <Route path="/" element={<Main />} /> */}
+        <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/job/:id" element={<Job />} />
         <Route path="/mypage" element={<Mypage />} />

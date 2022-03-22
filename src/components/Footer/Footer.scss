@@ -1,10 +1,10 @@
 .footer {
   width: 100%;
   border-top: 1px solid #ccc;
+  padding: 25px 10%;
 
   .inner {
     max-width: 1180px;
-    padding: 25px 10%;
     margin: 0 auto;
 
     .wrap {
@@ -48,7 +48,7 @@
 
       .right-side {
         img {
-          margin-right: 12px;
+          margin-left: 12px;
           width: 20px;
         }
       }
