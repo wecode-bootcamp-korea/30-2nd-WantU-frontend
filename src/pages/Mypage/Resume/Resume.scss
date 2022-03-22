@@ -1,0 +1,26 @@
+.resume {
+  .resumeInfo {
+    padding: 20px;
+
+    .uploadFile {
+      all: unset;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    .uploadDate {
+      margin-top: 10px;
+      color: #999999;
+    }
+  }
+
+  .resumeControl {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    border-top: 1px solid #d1d1d1;
+  }
+}
