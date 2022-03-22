@@ -1,6 +1,8 @@
 .nav {
   position: fixed;
+  top: 0;
   width: 100%;
+  padding: 0 10%;
   margin-bottom: 200px;
   border-bottom: 1px solid #ccc;
   background-color: white;
@@ -13,7 +15,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
 
     .left-menu {
       display: flex;
