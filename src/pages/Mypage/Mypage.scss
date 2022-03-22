@@ -1,0 +1,123 @@
+.mypage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 50px 10% 0 10%;
+  width: 100%;
+  background-color: #f8f8f8;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .apply {
+    margin-top: 40px;
+    width: 100%;
+
+    .statusBox {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 0 10%;
+      margin: 25px 0 50px;
+      color: #999999;
+      font-weight: 300;
+
+      .applyStatus {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 70px;
+        border-right: 1px solid #d1d1d1;
+        cursor: pointer;
+
+        &:last-child {
+          border: none;
+        }
+
+        .applyCount {
+          font-size: 40px;
+        }
+      }
+    }
+
+    .totalApply {
+      display: inline-block;
+      margin-bottom: 25px;
+    }
+
+    .applyDetail {
+      margin-bottom: 100px;
+      width: 100%;
+
+      tr {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        height: 45px;
+        align-items: center;
+        background-color: #ffffff;
+        border-bottom: 1px solid #d1d1d1;
+        text-align: center;
+        color: #3e4141;
+        font-size: 15px;
+      }
+
+      thead tr {
+        background-color: #f8f8f8;
+        font-size: 13px;
+        color: #999999;
+      }
+    }
+  }
+
+  .resume {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+
+    .resumeWrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 20px;
+      margin-top: 25px;
+      width: 100%;
+
+      input[type='file'] {
+        position: fixed;
+        width: 0;
+        height: 0;
+      }
+
+      .resumeUpload {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 190px;
+        background-color: #ffffff;
+        border: 1px solid #d1d1d1;
+
+        &:first-child {
+          align-items: center;
+          padding: 35px 0;
+          cursor: pointer;
+
+          .uploadIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background-color: #e1e2e3;
+
+            i {
+              color: #999999;
+            }
+          }
+        }
+      }
+    }
+  }
+}
