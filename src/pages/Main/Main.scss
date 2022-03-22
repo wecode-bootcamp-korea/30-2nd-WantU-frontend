@@ -1,0 +1,59 @@
+.subNav {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  top: 51px;
+  z-index: 5;
+
+  .inner {
+    max-width: 1180px;
+    padding: 20px 10%;
+
+    .subTitle {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .wrap {
+      display: flex;
+      align-items: center;
+
+      .categoryName {
+        padding-right: 30px;
+
+        &:hover {
+          color: blue;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.section {
+  margin-top: 190px;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  .bind {
+    .tag {
+      width: 180px;
+      margin-right: 10px;
+      padding: 5px;
+    }
+
+    .area {
+      width: 112px;
+      margin-right: 10px;
+      padding: 5px;
+    }
+  }
+
+  .filter {
+    .detailFilter {
+      padding: 5px;
+    }
+  }
+}
