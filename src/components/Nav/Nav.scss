@@ -16,7 +16,7 @@
     justify-content: space-between;
     align-items: center;
 
-    .left-menu {
+    .leftMenu {
       display: flex;
       align-items: center;
 
@@ -28,12 +28,12 @@
           color: #606060;
           margin: -2px 15px 0 0;
 
-          &:hover .main-menu {
+          &:hover .mainMenu {
             visibility: visible;
           }
         }
 
-        .main-menu {
+        .mainMenu {
           background-color: #fff;
           position: absolute;
           top: 34px;
@@ -41,7 +41,7 @@
           visibility: hidden;
           line-height: 30px;
 
-          .main-list {
+          .mainList {
             width: 100%;
             padding: 8.3px 20px;
 
@@ -52,25 +52,25 @@
 
               background-color: rgb(245, 244, 244);
 
-              .main-txt {
+              .mainTxt {
                 color: rgb(0, 81, 255);
               }
             }
 
             &:nth-child(2) {
-              &:hover .sub-menu {
+              &:hover .subMenu {
                 visibility: visible;
               }
             }
 
-            .main-txt {
+            .mainTxt {
               color: #000;
               cursor: pointer;
               font-size: 13px;
             }
           }
         }
-        .sub-menu {
+        .subMenu {
           background-color: #fff;
           position: absolute;
           top: 0px;
@@ -78,7 +78,7 @@
           width: 218px;
           visibility: hidden;
 
-          .sub-list {
+          .subList {
             width: 100%;
             padding: 8.3px 20px;
             background-color: rgb(245, 244, 244);
@@ -87,7 +87,7 @@
               background-color: transparent;
             }
 
-            .sub-txt {
+            .subTxt {
               color: #777;
               cursor: pointer;
               font-size: 13px;
@@ -100,7 +100,7 @@
                 background-color: transparent;
               }
 
-              .sub-txt {
+              .subTxt {
                 color: rgb(0, 81, 255);
               }
             }
@@ -115,7 +115,7 @@
       }
     }
 
-    .right-menu {
+    .rightMenu {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -126,7 +126,7 @@
         margin-right: 10px;
       }
 
-      .login-btn {
+      .loginBtn {
         color: #606060;
         font-size: 15px;
         font-weight: bold;
@@ -143,7 +143,7 @@
         padding-bottom: 5px;
       }
 
-      .my-btn {
+      .myBtn {
         width: 81.65px;
         height: 30px;
         line-height: 15px;

@@ -4,7 +4,6 @@ import './ApplyForm.scss';
 const ApplyForm = ({
   closeForm,
   handleInput,
-  isValid,
   applier,
   user,
   submitForm,
@@ -12,7 +11,7 @@ const ApplyForm = ({
 }) => {
   const [checked, setChecked] = useState('');
 
-  console.log(applier);
+  const isValid = applier.name && applier.phone && checked;
 
   return (
     <aside className="applyForm">
@@ -67,13 +66,11 @@ const ApplyForm = ({
                     setChecked('');
                   }
                 }}
-                checked={resume.uuid === checked ? true : false}
+                checked={resume.uuid === checked}
               />
               <div className="fileInfo">
                 <span className="fileName">{resume.name}</span>
-                <span className="fileDate">
-                  {resume.created_at.split('T')[0]}
-                </span>
+                <span className="fileDate">{resume.created_date}</span>
               </div>
             </div>
           ))}

@@ -6,19 +6,19 @@ function Footer() {
     <footer className="footer">
       <div className="inner">
         <div className="wrap">
-          <div className="left-side">
+          <div className="leftSide">
             <div className="logo">
-              <img className="logo-img" src="/images/wantu.png" alt="logo" />
+              <img className="logoImg" src="/images/wantu.png" alt="logo" />
               <h1>WantU</h1>
             </div>
-            <ul className="footer-list">
+            <ul className="footerList">
               <li>기업소개</li>
               <li>이용약관</li>
               <li>개인정보 처리방침</li>
               <li>고객센터</li>
             </ul>
           </div>
-          <div className="right-side">
+          <div className="rightSide">
             <img src="/images/social_instagram.png" alt="instagram" />
             <img src="/images/social_youtube.png" alt="youtube" />
             <img src="/images/social_facebook.png" alt="facebook" />
@@ -30,7 +30,7 @@ function Footer() {
           </div>
         </div>
         <div className="txt">
-          <div className="left-txt">
+          <div>
             <p>
               (주)원티드랩 (대표이사:이복기) | 서울특별시 송파구 올림픽로 300
               롯데월드타워 35층 | 통신판매번호 : 2020-서울송파-3147
@@ -42,7 +42,7 @@ function Footer() {
             </p>
             <p>© Wantedlab, Inc.</p>
           </div>
-          <div className="right-txt" />
+          <div />
           <select>
             <option value="kr">🇰🇷 한국 (한국어)</option>
             <option value="jp">🇯🇵 日本 (日本語)</option>

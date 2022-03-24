@@ -1,33 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Login from '../../pages/Login/Login';
 import { useNavigate } from 'react-router';
 import './Nav.scss';
 
 function Nav() {
   const [isLogin, setIsLogin] = useState(false);
+  const [token, setToken] = useState('');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    getToken();
+  }, [isLogin]);
+
   const goToMyPage = () => navigate('/mypage');
+
+  const getToken = () => {
+    setToken(localStorage.getItem('token'));
+  };
 
   return (
     <>
       <nav className="nav">
         <div className="inner">
-          <div className="left-menu">
+          <div className="leftMenu">
             <div className="dropdown">
-              <ul className="menu-btn">
+              <ul>
                 <i className="fa fa-bars" aria-hidden="true">
-                  <ul className="main-menu">
-                    <li className="main-list" />
-                    <li className="main-list">
-                      <a className="main-txt" href="/">
+                  <ul className="mainMenu">
+                    <li className="mainList" />
+                    <li className="mainList">
+                      <a className="mainTxt" href="/">
                         개발
                       </a>
-                      <ul className="sub-menu">
-                        <li className="sub-list" />
+                      <ul className="subMenu">
+                        <li className="subList" />
                         {SUB_MENUS.map(menu => (
-                          <li key={menu.id} className="sub-list">
-                            <a className="sub-txt" href="/">
+                          <li key={menu.id} className="subList">
+                            <a className="subTxt" href="/">
                               {menu.text}
                             </a>
                           </li>
@@ -35,8 +44,8 @@ function Nav() {
                       </ul>
                     </li>
                     {MAIN_MENUS.map(menu => (
-                      <li key={menu.id} className="main-list">
-                        <a className="main-txt" href="/">
+                      <li key={menu.id} className="mainList">
+                        <a className="mainTxt" href="/">
                           {menu.text}
                         </a>
                       </li>
@@ -49,17 +58,32 @@ function Nav() {
               <h1 className="logo">WantU</h1>
             </a>
           </div>
-          <div className="right-menu">
+          <div className="rightMenu">
             <a href="/">
               <i className="fa fa-search" aria-hidden="true" />
             </a>
-            <button className="login-btn" onClick={() => setIsLogin(!isLogin)}>
-              로그인
-            </button>
-            <span className="bar">|</span>
-            <button className="my-btn" onClick={goToMyPage}>
-              My Page
-            </button>
+            {!token ? (
+              <button className="loginBtn" onClick={() => setIsLogin(true)}>
+                로그인
+              </button>
+            ) : (
+              <>
+                <button
+                  className="loginBtn"
+                  onClick={() => {
+                    localStorage.removeItem('token');
+                    getToken();
+                    navigate('/');
+                  }}
+                >
+                  로그아웃
+                </button>
+                <span className="bar">|</span>
+                <button className="myBtn" onClick={goToMyPage}>
+                  My Page
+                </button>
+              </>
+            )}
           </div>
         </div>
       </nav>

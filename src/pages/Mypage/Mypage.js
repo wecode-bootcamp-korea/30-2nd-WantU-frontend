@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Resume from './Resume/Resume';
+import API from '../../config';
 import './Mypage.scss';
 
 const Mypage = () => {
@@ -8,12 +9,11 @@ const Mypage = () => {
   const [applicationList, setApplicationList] = useState([]);
   const [newFile, setNewFile] = useState({});
 
-  const token =
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjQ4MTI3OTc2fQ.IttgT3jeK5d8PvX-XQIK3UZHVyUDSTGlel53-jTe3zw';
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     fileLoad();
-    fetch('http://10.58.5.194:8000/applications', {
+    fetch(API.applications, {
       method: 'GET',
       headers: {
         Authorization: token,
@@ -27,7 +27,7 @@ const Mypage = () => {
     if (newFile.name) {
       let formData = new FormData();
       formData.append('filename', newFile);
-      fetch('http://10.58.5.194:8000/cv', {
+      fetch(API.cv, {
         method: 'POST',
         headers: {
           Authorization: token,
@@ -46,7 +46,7 @@ const Mypage = () => {
   }, [newFile]);
 
   const openDetail = category => {
-    fetch(`http://10.58.5.194:8000/applications/status/${category}`, {
+    fetch(`${API.applications}/status/${category}`, {
       method: 'GET',
       headers: {
         Authorization: token,
@@ -61,7 +61,7 @@ const Mypage = () => {
   };
 
   const download = (uuid, filename) => {
-    fetch(`http://10.58.5.194:8000/cv/list/${uuid}`, {
+    fetch(`${API.cv_list}/${uuid}`, {
       method: 'GET',
       headers: {
         Authorization: token,
@@ -84,7 +84,7 @@ const Mypage = () => {
   };
 
   const modifyName = (uuid, changedName) => {
-    fetch(`http://10.58.5.194:8000/cv/list/${uuid}`, {
+    fetch(`${API.cv_list}/${uuid}`, {
       method: 'POST',
       headers: {
         Authorization: token,
@@ -99,7 +99,7 @@ const Mypage = () => {
   };
 
   const deleteFile = uuid => {
-    fetch(`http://10.58.5.194:8000/cv/list/${uuid}`, {
+    fetch(`${API.cv_list}/${uuid}`, {
       method: 'DELETE',
       headers: {
         Authorization: token,
@@ -113,7 +113,7 @@ const Mypage = () => {
   };
 
   const fileLoad = () => {
-    fetch('http://10.58.5.194:8000/cv/list', {
+    fetch(API.cv_list, {
       method: 'GET',
       headers: {
         Authorization: token,

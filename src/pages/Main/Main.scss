@@ -1,59 +1,83 @@
-.subNav {
+@import '/src/styles/variables.scss';
+
+.main {
   width: 100%;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  position: fixed;
-  top: 51px;
-  z-index: 5;
 
-  .inner {
-    max-width: 1180px;
-    padding: 20px 10%;
+  .subNav {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    top: 51px;
+    z-index: 5;
 
-    .subTitle {
-      font-size: 25px;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
+    .inner {
+      max-width: 1180px;
+      padding: 20px 10%;
 
-    .wrap {
-      display: flex;
-      align-items: center;
+      .subTitle {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
 
-      .categoryName {
-        padding-right: 30px;
+      .wrap {
+        display: flex;
+        align-items: center;
 
-        &:hover {
-          color: blue;
-          cursor: pointer;
+        .categoryName {
+          padding-right: 30px;
+
+          &:hover {
+            color: blue;
+            cursor: pointer;
+          }
         }
       }
     }
   }
-}
 
-.section {
-  margin-top: 190px;
-  padding: 0 10%;
-  display: flex;
-  justify-content: space-between;
-  .bind {
-    .tag {
-      width: 180px;
-      margin-right: 10px;
-      padding: 5px;
+  .section {
+    margin-top: 190px;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+
+    .bind {
+      .tag {
+        width: 180px;
+        margin-right: 10px;
+        padding: 5px;
+      }
+
+      .area {
+        width: 112px;
+        margin-right: 10px;
+        padding: 5px;
+      }
     }
 
-    .area {
-      width: 112px;
-      margin-right: 10px;
-      padding: 5px;
+    .filter {
+      .detailFilter {
+        padding: 5px;
+      }
     }
   }
 
-  .filter {
-    .detailFilter {
-      padding: 5px;
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+
+    button {
+      all: unset;
+      margin: 10px;
+      padding: 5px 10px;
+      border: $border;
+      border-radius: 10px;
+      background-color: lightgray;
+      cursor: pointer;
     }
   }
 }

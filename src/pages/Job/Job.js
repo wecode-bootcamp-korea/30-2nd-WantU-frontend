@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ApplyForm from './ApplyForm/ApplyForm';
+import API from '../../config';
 import './Job.scss';
 
 const Job = () => {
@@ -16,7 +17,7 @@ const Job = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch(`http://10.58.2.143:8000/jobs/${id}`, {
+    fetch(`${API.jobs}/${id}`, {
       method: 'GET',
       headers: { Authorization: token },
     })
@@ -24,7 +25,7 @@ const Job = () => {
       .then(data => setJobData(data.results));
 
     if (token) {
-      fetch(`http://10.58.2.143:8000/jobs/${id}/user`, {
+      fetch(`${API.jobs}/${id}/user`, {
         method: 'GET',
         headers: { Authorization: token },
       })
@@ -43,11 +44,13 @@ const Job = () => {
     }
   }, [userData]);
 
+  console.log(userData);
+
   useEffect(() => {
     if (newFile.name) {
       let formData = new FormData();
       formData.append('filename', newFile);
-      fetch('http://10.58.5.194:8000/cv', {
+      fetch(API.cv, {
         method: 'POST',
         headers: {
           Authorization: token,
@@ -57,7 +60,7 @@ const Job = () => {
         .then(res => res.json())
         .then(result => {
           if (result.message === 'upload success') {
-            fetch('http://10.58.5.194:8000/cv/list', {
+            fetch(API.cv_list, {
               method: 'GET',
               headers: {
                 Authorization: token,
@@ -116,7 +119,7 @@ const Job = () => {
   };
 
   const submitForm = uuid => {
-    fetch('http://10.58.5.194:8000/applications/submission', {
+    fetch(API.submission, {
       method: 'POST',
       headers: { Authorization: token },
       body: JSON.stringify({
@@ -135,8 +138,6 @@ const Job = () => {
         }
       });
   };
-
-  const isValid = applier.name && applier.phone;
 
   if (!jobData.company_name) {
     return null;
@@ -213,7 +214,6 @@ const Job = () => {
           user={userData}
           closeForm={closeForm}
           handleInput={handleInput}
-          isValid={isValid}
           applier={applier}
           submitForm={submitForm}
           handleFileInput={handleFileInput}

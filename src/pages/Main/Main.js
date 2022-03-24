@@ -1,24 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import Figure from './Figure';
+import API from '../../config';
 import './Main.scss';
 
 function Main() {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [recruits, setRecruits] = useState([]);
-  const [sort, setSort] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  const [sort, setSort] = useState('id');
   const [area, setArea] = useState('');
   const [tag, setTag] = useState(0);
   const [category, setCategory] = useState(0);
+  const [page, setPage] = useState(1);
+
   const kakaoCode = location.search.split('=')[1];
   const kakaoUrl = `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=http://localhost:3000/&code=${kakaoCode}`;
 
   useEffect(() => {
-    fetch(`http://10.58.2.143:8000/jobs`)
-      .then(res => res.json())
-      .then(data => setRecruits(data.results));
+    getToken();
   }, []);
+
+  useEffect(() => {
+    let addPath = `?sort=${sort}&area=${area}&tag=${tag}&category=${category}`;
+    fetch(`${API.jobs}${addPath}`)
+      .then(res => res.json())
+      .then(data => {
+        setRecruits(data.results.list_data);
+        setTotalCount(data.results.total_count);
+      });
+  }, [sort, area, tag, category]);
+
+  useEffect(() => {
+    let addPath = `?sort=${sort}&area=${area}&tag=${tag}&category=${category}&offset=${
+      (page - 1) * 8
+    }&limit=${page * 8}`;
+    fetch(`${API.jobs}${addPath}`)
+      .then(res => res.json())
+      .then(data => {
+        setRecruits(data.results.list_data);
+        setTotalCount(data.results.total_count);
+      });
+  }, [page]);
 
   const getToken = () => {
     if (!location.search) return;
@@ -38,7 +62,7 @@ function Main() {
   };
 
   const sendToken = kakaoToken => {
-    fetch('http://10.58.2.143:8000/users/kakao/login', {
+    fetch(API.login, {
       method: 'GET',
       headers: {
         Authorization: kakaoToken,
@@ -54,26 +78,34 @@ function Main() {
       });
   };
 
-  useEffect(() => {
-    getToken();
-  }, []);
+  const pageUp = () => {
+    setPage(prev => {
+      if (prev * 8 < totalCount) {
+        return prev + 1;
+      } else {
+        return prev;
+      }
+    });
+  };
 
-  useEffect(() => {
-    let addPath = `?sort=${sort}&area=${area}&tag=${tag}&category=${category}`;
-    fetch(`http://10.58.2.143:8000/jobs${addPath}`)
-      .then(res => res.json())
-      .then(data => setRecruits(data.results));
-  }, [sort, area, tag, category]);
+  const pageDown = () => {
+    setPage(prev => {
+      if (prev > 1) {
+        return prev - 1;
+      } else {
+        return prev;
+      }
+    });
+  };
 
   return (
-    <>
+    <div className="main">
       <div className="subNav">
         <div className="inner">
           <h2 className="subTitle">개발</h2>
           <div
             onClick={e => {
               setCategory(e.target.id);
-              console.log(e.target.id);
             }}
             className="wrap"
           >
@@ -98,6 +130,7 @@ function Main() {
           </div>
         </div>
       </div>
+
       <section className="section">
         <div className="bind">
           <select
@@ -105,7 +138,7 @@ function Main() {
             name="tag"
             className="tag"
           >
-            <option>-- Tags --</option>
+            <option value="0">-- Tags --</option>
             <option value="1"># 자율 복장</option>
             <option value="2"># 야근 없음</option>
             <option value="3"># 위워크</option>
@@ -116,7 +149,13 @@ function Main() {
           </select>
           <select
             onChange={e => {
-              setArea(e.target.value);
+              setArea(() => {
+                if (e.target.value === '-- 지역 --') {
+                  return '';
+                } else {
+                  return e.target.value;
+                }
+              });
             }}
             className="area"
             name="area"
@@ -134,16 +173,21 @@ function Main() {
             }}
             className="detailFilter"
           >
-            <option value="1">제목 오름차순</option>
-            <option value="2">제목 내림차순</option>
-            <option value="3">마감일 오름차순</option>
-            <option value="4">마감일 내림차순</option>
-            <option value="5">등록일순</option>
+            <option value="id">최신순</option>
+            <option value="title">제목 오름차순</option>
+            <option value="-title">제목 내림차순</option>
+            <option value="due_date">마감일 오름차순</option>
+            <option value="-due_date">마감일 내림차순</option>
+            <option value="-id">등록일순</option>
           </select>
         </div>
       </section>
       <Figure recruits={recruits} />
-    </>
+      <div className="pagination">
+        <button onClick={pageDown}>PREV</button>
+        <button onClick={pageUp}>NEXT</button>
+      </div>
+    </div>
   );
 }
 

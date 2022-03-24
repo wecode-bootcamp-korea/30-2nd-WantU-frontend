@@ -14,9 +14,9 @@ function Login({ closeModal }) {
           </span>
         </div>
         <p className="info">직장인을 위한</p>
-        <p className="info-add">커리어 플랫폼, 원츄!</p>
+        <p className="infoAdd">커리어 플랫폼, 원츄!</p>
         <p className="detail">커리어 성장과 행복을 위한 여정</p>
-        <p className="detail-add">지금 원츄에서 시작하세요.</p>
+        <p className="detailAdd">지금 원츄에서 시작하세요.</p>
 
         <form>
           <p className="kakao">카카오</p>
@@ -25,13 +25,13 @@ function Login({ closeModal }) {
           <div className="sns">
             <button
               type="button"
-              className="kakao-btn"
+              className="kakaoBtn"
               onClick={() => (window.location.href = kauthUrl)}
             >
               <i className="fa fa-comment" aria-hidden="true" />
             </button>
 
-            <span className="btn-name">kakao</span>
+            <span className="btnName">kakao</span>
           </div>
           <p className="worry">
             걱정마세요! 여러분의 지원 활동은 kakao에 노출되지 않습니다.
